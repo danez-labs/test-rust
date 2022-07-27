@@ -9,7 +9,7 @@ use simple_logger::SimpleLogger;
 #[tokio::main]
 async fn main() -> Result<(), Error> {
     SimpleLogger::new().with_level(LevelFilter::Info).init().unwrap();
-    let rand = SystemRandom::new();
+    let _rand = SystemRandom::new();
 
     let func = handler_fn(my_handler);
     lambda_runtime::run(func).await?;
@@ -17,7 +17,7 @@ async fn main() -> Result<(), Error> {
 }
 
 pub(crate) async fn my_handler(event: ApiGatewayProxyRequest, _ctx: Context) -> Result<ApiGatewayProxyResponse, Error> {
-    let path = event.path.unwrap();
+    let _path = event.path.unwrap();
 
     let resp = ApiGatewayProxyResponse {
         status_code: 200,
